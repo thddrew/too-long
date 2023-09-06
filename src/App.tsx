@@ -1,66 +1,24 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 import { Toaster } from "@/components/ui/toaster";
-import { useToast } from "@/components/ui/use-toast";
-import { Button } from "@/components/ui/button";
 import { ThemeProvider } from "@/components/theme-provider";
+import { LinkShortener } from "./components/LinkShortener";
+
+const queryClient = new QueryClient();
 
 function App() {
-  const [count, setCount] = useState(0);
-  const { toast } = useToast();
-
   return (
-    <ThemeProvider>
-      <div className="max-w-2xl py-4 text-center m-auto">
-        <a
-          className="inline-block"
-          href="https://vitejs.dev"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            src={viteLogo}
-            alt="Vite logo"
-          />
-        </a>
-        <a
-          className="inline-block"
-          href="https://react.dev"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            src={reactLogo}
-            alt="React logo"
-          />
-        </a>
-        <h1>Vite + React</h1>
-        <div>
-          <Button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </Button>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test HMR
-          </p>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <div className="max-w-2xl py-4 text-center m-auto flex flex-col gap-4">
+          <h1 className="text-4xl font-bold">Link Shortener</h1>
         </div>
-        <p>Click on the Vite and React logos to learn more</p>
-        <Button
-          variant="outline"
-          onClick={() => {
-            toast({
-              title: "Hello",
-              description: "This is a toast",
-            });
-          }}
-        >
-          Click me!
-        </Button>
-      </div>
-
-      <Toaster />
-    </ThemeProvider>
+        <div className="max-w-md m-auto">
+          <LinkShortener />
+        </div>
+        <Toaster />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 
