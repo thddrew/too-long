@@ -9,13 +9,14 @@ import {
 import App from "./App.tsx";
 import "./index.css";
 import { LinkShortener } from "./components/LinkShortener.tsx";
+import Home from "./pages/Home.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<App />}>
       <Route
         path="/"
-        element={<div>Home</div>}
+        element={<Home />}
       />
       <Route
         path="/link-shortener"

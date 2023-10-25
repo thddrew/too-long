@@ -41,7 +41,7 @@ ListItem.displayName = "ListItem";
 
 export const AppHeader = () => {
   return (
-    <NavigationMenu className="sticky top-0 left-1/2 py-4 -translate-x-1/2">
+    <NavigationMenu className="block top-0 left-1/2 py-4 -translate-x-1/2">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuLink

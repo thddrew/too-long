@@ -2,8 +2,8 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Outlet } from "react-router-dom";
 import { AppHeader } from "./components/AppHeader";
+import PageLayout from "./components/PageLayout";
 
 const queryClient = new QueryClient();
 
@@ -12,7 +12,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <AppHeader />
-        <Outlet />
+        <PageLayout />
         <Toaster />
       </ThemeProvider>
     </QueryClientProvider>
