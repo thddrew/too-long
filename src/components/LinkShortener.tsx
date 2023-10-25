@@ -65,38 +65,47 @@ export const LinkShortener = () => {
   };
 
   return (
-    <Form {...form}>
-      {/* Possible workaround; this is a lib bug https://github.com/orgs/react-hook-form/discussions/8020 */}
-      {/* <form onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}> */}
-      <form
-        // eslint-disable-next-line @typescript-eslint/no-misused-promises
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-2"
-      >
-        <FormField
-          control={form.control}
-          name="link"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Link"
-                  {...field}
-                />
-              </FormControl>
-              <FormDescription>This is the link to shorten.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button
-          type="submit"
-          disabled={isFetching}
-        >
-          Shorten
-        </Button>
-      </form>
-    </Form>
+    <>
+      <div className="max-w-2xl py-4 text-center m-auto flex flex-col gap-4">
+        <h1 className="text-4xl font-bold">Link Shortener</h1>
+      </div>
+      <div className="max-w-md m-auto">
+        <Form {...form}>
+          {/* Possible workaround; this is a lib bug https://github.com/orgs/react-hook-form/discussions/8020 */}
+          {/* <form onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}> */}
+          <form
+            // eslint-disable-next-line @typescript-eslint/no-misused-promises
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-2"
+          >
+            <FormField
+              control={form.control}
+              name="link"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Username</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Link"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    This is the link to shorten.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              disabled={isFetching}
+            >
+              Shorten
+            </Button>
+          </form>
+        </Form>
+      </div>
+    </>
   );
 };
